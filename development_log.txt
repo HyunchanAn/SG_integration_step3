@@ -2,3 +2,5 @@
 
 [2026-06-22] 대규모 아키텍처 통일성 반영: pyproject.toml, Dockerfile, docker-compose.yml, CI/CD 추가 완료.
 [2026-06-22] CI/CD 빌드 오류 수정: 소스 파일이 누락되어 발생하는 mypy 및 pytest 에러를 방지하고자 dummy 소스 및 테스트 파일(src/__init__.py, tests/test_dummy.py)을 생성하고 pyproject.toml 설정을 조율함.
+
+2026-06-26: README.md (아키텍처 및 다이어그램) 업데이트
