@@ -4,3 +4,6 @@
 [2026-06-22] CI/CD 빌드 오류 수정: 소스 파일이 누락되어 발생하는 mypy 및 pytest 에러를 방지하고자 dummy 소스 및 테스트 파일(src/__init__.py, tests/test_dummy.py)을 생성하고 pyproject.toml 설정을 조율함.
 
 2026-06-26: README.md (아키텍처 및 다이어그램) 업데이트
+
+
+2026-06-27: 불필요한 빌드 캐시, pycache, egg-info 등 임시 파일 일괄 정리 및 루트 경로 대청소 완료.
