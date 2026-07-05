@@ -1,6 +1,7 @@
 import streamlit as st
 import sys
 import os
+from loguru import logger
 
 # ---------------------------------------------------------------------------
 # Add submodules to Python path
@@ -43,6 +44,12 @@ with tab2:
     st.header("역설계 AI 피드백 루프 (013)")
     st.markdown("목표 물성을 달성하기 위한 모노머 배합을 최적화합니다.")
     if st.button("역설계 사이클 시작", type="primary"):
+        logger.info("Step3 UI: Starting reverse engineering cycle.")
+        aa_content = 5.0
+        if aa_content > 3.0:
+            logger.warning(f"Step3 UI: Polymer gelation risk! AA content {aa_content} phr exceeds 3.0 phr limit.")
+            st.warning(f"경고: AA 함량({aa_content}%)이 3.0%를 초과하여 겔화 위험이 있습니다. 최적화 패널티가 부여됩니다.")
+        logger.info("Step3 UI: Reverse engineering cycle completed.")
         st.success("역설계 완료! 최적 배합: [2-EHA: 70%, AA: 5%, VAc: 25%]")
 
 with tab3:
@@ -50,6 +57,7 @@ with tab3:
     st.markdown("도출된 배합의 물성 예측(001, 006) 및 구조 시뮬레이션(009) 결과입니다.")
     
     if st.button("물성 검증 실행", type="primary"):
+        logger.info("Step3 UI: Executing property verification and IR simulation.")
         col_res1, col_res2 = st.columns(2)
         with col_res1:
             st.metric("예측 점착력", "1185 gf/25mm", "-15 gf (목표대비)")
