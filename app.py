@@ -3,14 +3,8 @@ import sys
 import os
 from loguru import logger
 
-# ---------------------------------------------------------------------------
-# Add submodules to Python path
-# ---------------------------------------------------------------------------
-BASE_DIR = os.path.dirname(os.path.abspath(__file__))
-sys.path.append(os.path.join(BASE_DIR, "SG_proj_001"))
-sys.path.append(os.path.join(BASE_DIR, "SG_proj_006"))
-sys.path.append(os.path.join(BASE_DIR, "SG_proj_009"))
-sys.path.append(os.path.join(BASE_DIR, "SG_proj_013"))
+# Submodules have been removed to prevent version fragmentation.
+# API communication over sg_network will be used instead.
 
 # ---------------------------------------------------------------------------
 # Page Config
