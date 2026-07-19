@@ -3,7 +3,7 @@
 ![Status](https://img.shields.io/badge/Status-Active-success)
 ![Python](https://img.shields.io/badge/Python-3.12-blue)
 ![Framework](https://img.shields.io/badge/Framework-Streamlit_XGBoost-orange)
-![Hardware](https://img.shields.io/badge/Hardware-Apple_M2_Pro-lightgrey)
+![Hardware](https://img.shields.io/badge/Hardware-Mac_M2_Pro_%7C_Win_RTX5080-lightgrey)
 
 ## 1. 개요
 Step 2에서 매칭되는 자사 제품이 없을 경우 구동되는 역설계 및 신규 고분자 배합 예측 플랫폼입니다. 타겟 물성을 입력받아 AI 피드백 루프를 통해 최적의 모노머 배합비를 도출하고, 해당 배합의 물리적 특성 및 분자 구조를 검증합니다.
@@ -34,3 +34,6 @@ graph TD
 git submodule update --init --recursive
 streamlit run app.py
 ```
+
+---
+*Last Updated: 2026-07-19 (Hybrid Environment & MSA Integration)*
