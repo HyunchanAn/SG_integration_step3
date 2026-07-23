@@ -6,6 +6,8 @@
 ![Hardware](https://img.shields.io/badge/Hardware-Mac_M2_Pro_%7C_Win_RTX5080-lightgrey)
 
 ## 1. 개요
+> **[24.07 Update]** 타겟값 누수가 원천 차단된 정직한 물리 엔진 기반 E2E NSGA-II 벤치마크 테스트를 완수하였으며, 현장 엑셀 양식을 모사한 가상 작업지시서(Virtual Work Order) 자동 발급 기능이 구현되었습니다.
+
 Step 2에서 매칭되는 자사 제품이 없을 경우 구동되는 역설계 및 신규 고분자 배합 예측 플랫폼입니다. 타겟 물성을 입력받아 AI 피드백 루프를 통해 최적의 모노머 배합비를 도출하고, 해당 배합의 물리적 특성 및 분자 구조를 검증합니다.
 
 ## 2. 아키텍처 다이어그램
@@ -36,4 +38,4 @@ streamlit run app.py
 ```
 
 ---
-*Last Updated: 2026-07-19 (Hybrid Environment & MSA Integration)*
+*Last Updated: 2026-07-24 (Hybrid Environment & MSA Integration)*
