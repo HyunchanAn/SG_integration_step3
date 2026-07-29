@@ -1,9 +1,10 @@
+import datetime
+import json
 import os
 import sys
-import json
-import datetime
-import pandas as pd
+
 import numpy as np
+import pandas as pd
 from sqlalchemy import create_engine
 
 # Set HF_TOKEN
@@ -11,16 +12,17 @@ if "HF_TOKEN" not in os.environ:
     try:
         with open(os.path.expanduser("~/.cache/huggingface/token"), "r") as f:
             os.environ["HF_TOKEN"] = f.read().strip()
-    except Exception:
-        pass
+    except Exception as e:
+        print(f"Failed to read HF_TOKEN: {e}")
 
 BASE_DIR = "/Users/hyunchanan/Documents/GitHub"
 sys.path.append(os.path.join(BASE_DIR, "SG_proj_001"))
-from sg_polysim.engine import RecipeOptimizer
+from sg_polysim.engine import RecipeOptimizer  # noqa: E402
+
 
 def generate_work_order(rank, recipe, target_props, pred_props, output_path):
     # 양식: 엑셀 포맷(발행 No, 작업지시서 결재라인, 배합 성분 등) 참고 마크다운
-    timestamp = datetime.datetime.now().strftime("%y%m%d_%H%M")
+    timestamp = datetime.datetime.now(datetime.timezone.utc).strftime("%y%m%d_%H%M")
     
     # 성분 분리
     monomers = []
@@ -33,8 +35,10 @@ def generate_work_order(rank, recipe, target_props, pred_props, output_path):
             else:
                 monomers.append(f"| {k_clean} | {v:.2f}% |")
                 
-    if not monomers: monomers.append("| N/A | 0% |")
-    if not additives: additives.append("| N/A | 0% |")
+    if not monomers:
+        monomers.append("| N/A | 0% |")
+    if not additives:
+        additives.append("| N/A | 0% |")
                 
     content = f"""# 위 물성을 만족하는 점착제를 위한 작업지시서 예측본입니다.
 
@@ -94,12 +98,15 @@ def main():
         formula_json = df.iloc[idx]["formula_data"]
         try:
             formula = json.loads(formula_json)
-        except:
+        except Exception as e:
+            print(f"Skipping bad formula: {e}")
             continue
             
         target_props = {}
-        if "VIS" in formula: target_props["점도(cP)"] = float(formula["VIS"])
-        if "점착력" in formula: target_props["측정_값"] = float(formula["점착력"])
+        if "VIS" in formula:
+            target_props["점도(cP)"] = float(formula["VIS"])
+        if "점착력" in formula:
+            target_props["측정_값"] = float(formula["점착력"])
         if len(target_props) < 2:
             continue
             
@@ -127,7 +134,7 @@ def main():
     top_3 = results[:3]
     
     # 보고서 작성
-    timestamp = datetime.datetime.now().strftime("%y%m%d_%H%M")
+    timestamp = datetime.datetime.now(datetime.timezone.utc).strftime("%y%m%d_%H%M")
     out_dir = os.path.join(BASE_DIR, "SG_integration_step3")
     
     report_path = os.path.join(out_dir, f"{timestamp}_step3_evaluation_report.md")
