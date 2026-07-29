@@ -12,7 +12,7 @@ if "HF_TOKEN" not in os.environ:
     try:
         with open(os.path.expanduser("~/.cache/huggingface/token"), "r") as f:
             os.environ["HF_TOKEN"] = f.read().strip()
-    except Exception as e:
+    except Exception as e:  # noqa: BLE001
         print(f"Failed to read HF_TOKEN: {e}")
 
 BASE_DIR = "/Users/hyunchanan/Documents/GitHub"
@@ -98,7 +98,7 @@ def main():
         formula_json = df.iloc[idx]["formula_data"]
         try:
             formula = json.loads(formula_json)
-        except Exception as e:
+        except Exception as e:  # noqa: BLE001
             print(f"Skipping bad formula: {e}")
             continue
             
