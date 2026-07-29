@@ -17,7 +17,6 @@ if "HF_TOKEN" not in os.environ:
 
 BASE_DIR = "/Users/hyunchanan/Documents/GitHub"
 sys.path.append(os.path.join(BASE_DIR, "SG_proj_001"))
-from sg_polysim.engine import RecipeOptimizer  # noqa: E402
 
 
 def generate_work_order(rank, recipe, target_props, pred_props, output_path):
@@ -85,6 +84,7 @@ def main():
     engine = create_engine(db_url)
     df = pd.read_sql("SELECT formula_data FROM adhesive_recipes", engine)
     
+    from sg_polysim.engine import RecipeOptimizer
     opt = RecipeOptimizer()
     
     num_tests = 300
