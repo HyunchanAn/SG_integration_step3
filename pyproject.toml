@@ -30,6 +30,9 @@ packages = ["src"]
 [tool.ruff]
 line-length = 100
 
+[tool.ruff.lint]
+select = ["E", "F"]
+ignore = ["E402", "E501", "E701", "E722", "F401", "F403", "F405", "F841", "F541"]
 [tool.mypy]
 strict = false
 ignore_missing_imports = true
